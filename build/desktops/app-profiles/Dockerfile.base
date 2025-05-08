@@ -4,7 +4,7 @@ RUN set -exu \
     && export DEBIAN_FRONTEND=noninteractive \
     && apt-get update -yq \
     && apt-get install -yq lsb-release software-properties-common \
-    && add-apt-repository "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) main universe restricted multiverse" \
+    && add-apt-repository "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) main universe restricted" \
     && apt-get -yq update \
     && apt-get -yq -u dist-upgrade \
     && apt-get -yq --no-install-recommends install \
