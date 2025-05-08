@@ -7,8 +7,8 @@ on:
 
 env:
   IMAGE_PREFIX: ghcr.io/kubevda/desktop
-  PLATFORMS: linux/amd64,linux/arm64
-  ARCHS: amd64,arm64
+  PLATFORMS: linux/amd64
+  ARCHS: amd64
   VERSION: latest
   COSIGN_EXPERIMENTAL: 1
 

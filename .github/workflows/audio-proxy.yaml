@@ -6,8 +6,8 @@ on:
     tags: [v*]
 
 env:
-  PLATFORMS: linux/amd64,linux/arm64
-  ARCHS: amd64,arm64
+  PLATFORMS: linux/amd64
+  ARCHS: amd64
   IMAGE: ghcr.io/kubevda/vdi-audio-proxy
   VERSION: ${{ startswith(github.ref, 'refs/tags/v') && github.ref || 'latest' }}
   COSIGN_EXPERIMENTAL: 1

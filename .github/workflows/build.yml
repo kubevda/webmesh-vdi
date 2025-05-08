@@ -9,8 +9,8 @@ on:
     branches: [main]
 
 env:
-  PLATFORMS: linux/amd64,linux/arm64
-  ARCHS: amd64,arm64
+  PLATFORMS: linux/amd64
+  ARCHS: amd64
   IMAGE_PREFIX: ghcr.io/kubevda/vdi
   VERSION: ${{ startswith(github.ref, 'refs/tags/v') && github.ref || 'latest' }}
   GO_VERSION: 1.21
