@@ -86,7 +86,7 @@ func (c *VDICluster) GetAppImage() string {
 
 // GetAppPullPolicy returns the ImagePullPolicy to use for the app deployment.
 func (c *VDICluster) GetAppPullPolicy() corev1.PullPolicy {
-	return corev1.PullIfNotPresent
+	return corev1.PullAlways
 }
 
 // GetAppSecurityContext returns the pod security context for the app deployment.
