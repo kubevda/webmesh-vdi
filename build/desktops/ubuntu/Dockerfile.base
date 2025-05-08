@@ -1,8 +1,9 @@
 FROM ubuntu:rolling as base-system
 
 # Core Dependencies
-ENV DEBIAN_FRONTEND noninteractive
-RUN apt-get update \
+RUN set -exu \
+  && export DEBIAN_FRONTEND=noninteractive \
+  && apt-get update \
   && apt-get dist-upgrade -y \
   && apt-get install -y --no-install-recommends \
   apt-utils ca-certificates software-properties-common \

@@ -4,7 +4,9 @@ ARG DESKTOP_PACKAGE
 ENV DESKTOP_PACKAGE=${DESKTOP_PACKAGE}
 
 ENV DEBIAN_FRONTEND noninteractive
-RUN apt-get update \
+RUN set -exu \
+  && export DEBIAN_FRONTEND=noninteractive \
+  && apt-get update \
   && apt-get install -y ${DESKTOP_PACKAGE} \
   && apt-get autoclean -y \
   && apt-get autoremove -y \

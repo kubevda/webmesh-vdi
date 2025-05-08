@@ -2,7 +2,9 @@ FROM ghcr.io/kubevda/desktop-apps-base:latest
 
 ARG ARCH=x64
 ENV ARCH=${ARCH}
-RUN apt-get update && apt-get install -y curl libxss1 libnss3 xz-utils \
+RUN set -exu \
+    && export DEBIAN_FRONTEND=noninteractive \
+    && apt-get update && apt-get install -y curl libxss1 libnss3 xz-utils \
     && curl -JLO \
     https://ftp.halifax.rwth-aachen.de/blender/release/Blender3.6/blender-3.6.5-linux-${ARCH}.tar.xz \
     && tar -C /usr/local -xf blender-3.6.5-linux-${ARCH}.tar.xz \

@@ -1,7 +1,9 @@
 FROM ubuntu:latest
 
 ENV DEBIAN_FRONTEND noninteractive
-RUN apt-get update \
+RUN set -exu \
+    && export DEBIAN_FRONTEND=noninteractive \
+    && apt-get update \
     && apt-get dist-upgrade -y \
     && apt-get install -y --no-install-recommends \
         ssh socat ovmf qemu-kvm qemu-utils cloud-image-utils \

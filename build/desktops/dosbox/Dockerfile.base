@@ -1,7 +1,8 @@
 FROM ubuntu:rolling
 
-ENV DEBIAN_FRONTEND noninteractive
-RUN apt-get update \
+RUN set -exu \
+    && export DEBIAN_FRONTEND=noninteractive \
+    && apt-get update \
     && apt-get -y -u dist-upgrade \
     && apt-get -y --no-install-recommends install \
     dosbox tigervnc-standalone-server xpra xfonts-base lwm supervisor xdotool pulseaudio libsdl1.2debian \
