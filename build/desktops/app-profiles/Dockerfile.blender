@@ -1,4 +1,4 @@
-FROM ghcr.io/webmeshproj/desktop-apps-base:latest
+FROM ghcr.io/kubevda/desktop-apps-base:latest
 
 ARG ARCH=x64
 ENV ARCH=${ARCH}

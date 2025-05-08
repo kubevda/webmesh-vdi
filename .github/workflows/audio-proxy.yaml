@@ -7,7 +7,7 @@ on:
 env:
   PLATFORMS: linux/amd64,linux/arm64
   ARCHS: amd64,arm64
-  IMAGE: ghcr.io/webmeshproj/vdi-audio-proxy
+  IMAGE: ghcr.io/kubevda/vdi-audio-proxy
   VERSION: ${{ startswith(github.ref, 'refs/tags/v') && github.ref || 'latest' }}
   COSIGN_EXPERIMENTAL: 1
 

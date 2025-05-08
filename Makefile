@@ -1,5 +1,5 @@
 SHELL   := /bin/bash
-REPO    ?= ghcr.io/webmeshproj
+REPO    ?= ghcr.io/kubevda
 VERSION ?= latest
 
 CRD_OPTIONS ?= "crd:preserveUnknownFields=false"

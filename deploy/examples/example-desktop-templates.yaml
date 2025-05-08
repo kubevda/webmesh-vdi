@@ -5,11 +5,11 @@ metadata:
   name: ubuntu-xfce
 spec:
   desktop:
-    image: ghcr.io/webmeshproj/desktop-ubuntu-base-xfce4:latest
+    image: ghcr.io/kubevda/desktop-ubuntu-base-xfce4:latest
     imagePullPolicy: IfNotPresent
     allowRoot: true
   proxy:
-    image: ghcr.io/webmeshproj/vdi-proxy:latest
+    image: ghcr.io/kubevda/vdi-proxy:latest
     allowFileTransfer: true
   dind: 
     image: "docker:19-dind" # Defaults to latest which may have issues depending on your runtime
@@ -24,11 +24,11 @@ metadata:
   name: ubuntu-kde
 spec:
   desktop:
-    image: ghcr.io/webmeshproj/desktop-ubuntu-base-kde:latest
+    image: ghcr.io/kubevda/desktop-ubuntu-base-kde:latest
     imagePullPolicy: IfNotPresent
     allowRoot: true
   proxy:
-    image: ghcr.io/webmeshproj/vdi-proxy:latest
+    image: ghcr.io/kubevda/vdi-proxy:latest
     allowFileTransfer: true
   tags:
     os: ubuntu
@@ -41,11 +41,11 @@ metadata:
   name: dosbox
 spec:
   desktop:
-    image: ghcr.io/webmeshproj/desktop-dosbox-base:latest
+    image: ghcr.io/kubevda/desktop-dosbox-base:latest
     imagePullPolicy: IfNotPresent
     init: supervisord
   proxy:
-    image: ghcr.io/webmeshproj/vdi-proxy:latest
+    image: ghcr.io/kubevda/vdi-proxy:latest
     pulseServer: unix:///var/run/kvdi/pulse-server
   tags:
     os: ubuntu

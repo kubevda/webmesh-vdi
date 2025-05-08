@@ -2340,7 +2340,7 @@ spec:
         - --leader-elect
         command:
         - /manager
-        image: ghcr.io/webmeshproj/vdi-manager:latest
+        image: ghcr.io/kubevda/vdi-manager:latest
         livenessProbe:
           httpGet:
             path: /healthz

@@ -6,7 +6,7 @@ on:
     tags: [v*]
 
 env:
-  IMAGE_PREFIX: ghcr.io/webmeshproj/desktop
+  IMAGE_PREFIX: ghcr.io/kubevda/desktop
   PLATFORMS: linux/amd64,linux/arm64
   ARCHS: amd64,arm64
   VERSION: latest
