@@ -1,10 +1,10 @@
-FROM docker.io/alpine:latest as ca_cert_source
+FROM docker.io/alpine:latest AS ca_cert_source
 
 RUN apk update && apk upgrade && apk add --no-cache ca-certificates
 RUN update-ca-certificates
 
 # Proxy build image
-FROM golang:1.21-alpine as builder
+FROM golang:1.21-alpine AS builder
 
 COPY --from=ca_cert_source /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 

@@ -1,4 +1,4 @@
-FROM ubuntu:rolling
+FROM ubuntu:24.10
 
 RUN set -exu \
     && export DEBIAN_FRONTEND=noninteractive \

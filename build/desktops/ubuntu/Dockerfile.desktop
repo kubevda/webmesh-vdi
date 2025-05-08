@@ -7,9 +7,9 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN set -exu \
   && export DEBIAN_FRONTEND=noninteractive \
   && apt-get update \
-  && apt-get install -y ${DESKTOP_PACKAGE} \
-  && apt-get autoclean -y \
-  && apt-get autoremove -y \
+  && apt-get install -yq ${DESKTOP_PACKAGE} \
+  && apt-get autoclean -yq \
+  && apt-get autoremove -yq \
   && rm -rf /var/lib/apt/lists/*
 
 COPY systemd/${DESKTOP_PACKAGE}.service /etc/systemd/user/desktop.service

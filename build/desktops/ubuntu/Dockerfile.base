@@ -1,18 +1,18 @@
-FROM docker.io/ubuntu:24.10 as base-system
+FROM docker.io/ubuntu:24.10 AS base-system
 
 # Core Dependencies
 RUN set -exu \
   && export DEBIAN_FRONTEND=noninteractive \
-  && apt-get update \
-  && apt-get dist-upgrade -y \
-  && apt-get install -y --no-install-recommends \
+  && apt-get update -yq \
+  && apt-get dist-upgrade -yq \
+  && apt-get install -yq --no-install-recommends \
   apt-utils ca-certificates software-properties-common \
-  && apt-get install -y --no-install-recommends \
+  && apt-get install -yq --no-install-recommends \
   coreutils iputils-ping sudo curl net-tools zenity xz-utils dbus-x11 x11-utils \
   alsa-utils mesa-utils libgl1-mesa-dri tigervnc-standalone-server xpra \
   systemd systemd-sysv pulseaudio pavucontrol firefox vim expect-dev mingetty \
-  && apt-get autoclean -y \
-  && apt-get autoremove -y \
+  && apt-get autoclean -yq \
+  && apt-get autoremove -yq \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
   && cd /usr/lib/systemd/system/sysinit.target.wants/ \
   && ls | grep -v systemd-tmpfiles-setup | xargs rm -f $1 \

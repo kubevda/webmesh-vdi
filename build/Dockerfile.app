@@ -1,4 +1,4 @@
-FROM docker.io/alpine:latest as ca_cert_source
+FROM docker.io/alpine:latest AS ca_cert_source
 
 RUN apk update && apk upgrade && apk add --no-cache ca-certificates
 RUN update-ca-certificates
