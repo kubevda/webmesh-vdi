@@ -1,4 +1,4 @@
-FROM docker.io/ubuntu:24.10 AS base-system
+FROM docker.io/ubuntu:24.04 AS base-system
 
 # Core Dependencies
 RUN set -exu \
