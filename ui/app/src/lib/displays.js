@@ -41,7 +41,7 @@ class Display extends Emitter {
     // A generic connector that calls to the child implementation, emitting any errors
     async connect(view, displayUrl) {
         try {
-            await this._connect(view, displayUrl)
+            await this._connect(view, displayUrl, {"password": "kubevda"})
         } catch (err) {
             this.emit(Events.error, err)
             throw err
