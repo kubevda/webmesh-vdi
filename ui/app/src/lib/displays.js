@@ -78,7 +78,10 @@ export class VNCDisplay extends Display {
         this._rfbClient.addEventListener('connect', (ev) => { this._connectedToRFBServer(ev) })
         this._rfbClient.addEventListener('disconnect', (ev) => { this._disconnectedFromRFBServer(ev) })
         this._rfbClient.addEventListener('clipboard', (ev) => { this._handleRecvClipboard(ev) })
-        this._rfbClient.addEventListener('serververification', (ev) => { console.log('serververification event received'); this._rfbClient.approveServer() })
+        this._rfbClient.addEventListener('serververification', (ev) => { console.log('serververification event received', ev); this._rfbClient.approveServer() })
+        this._rfbClient.addEventListener('securityfailure', (ev) => { console.log(ev) })
+        this._rfbClient.addEventListener('credentialsrequired', (ev) => { console.log(ev) })
+        credentialsrequired
         this._rfbClient.resizeSession = true
         this._rfbClient.scaleViewport = true
     }
@@ -90,7 +93,8 @@ export class VNCDisplay extends Display {
     // _connectedToRFBServer is called when the RFB connection is established
     // with the desktop session.
     _connectedToRFBServer (ev) {
-        console.log('Connected to RFB server')        
+        console.log('Connected to RFB server')
+        this._rfbClient.approveServer()
         const canvas = document.querySelector('canvas')
         canvas.addEventListener('keydown', (e) => {
             if (e.ctrlKey && e.location === 2) { // secondary ctrl locks pointer
