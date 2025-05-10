@@ -81,7 +81,6 @@ export class VNCDisplay extends Display {
         this._rfbClient.addEventListener('serververification', (ev) => { console.log('serververification event received', ev); this._rfbClient.approveServer() })
         this._rfbClient.addEventListener('securityfailure', (ev) => { console.log(ev) })
         this._rfbClient.addEventListener('credentialsrequired', (ev) => { console.log(ev) })
-        credentialsrequired
         this._rfbClient.resizeSession = true
         this._rfbClient.scaleViewport = true
     }
