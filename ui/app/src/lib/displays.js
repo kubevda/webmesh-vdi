@@ -41,7 +41,7 @@ class Display extends Emitter {
     // A generic connector that calls to the child implementation, emitting any errors
     async connect(view, displayUrl) {
         try {
-            await this._connect(view, displayUrl, {"password": "kubevda"})
+            await this._connect(view, displayUrl)
         } catch (err) {
             this.emit(Events.error, err)
             throw err
@@ -74,7 +74,7 @@ export class VNCDisplay extends Display {
             return 
         }
         console.log('Creating RFB connection')
-        this._rfbClient = new RFB(view, displayUrl)
+        this._rfbClient = new RFB(view, displayUrl, {"password": "kubevda"})
         this._rfbClient.addEventListener('connect', (ev) => { this._connectedToRFBServer(ev) })
         this._rfbClient.addEventListener('disconnect', (ev) => { this._disconnectedFromRFBServer(ev) })
         this._rfbClient.addEventListener('clipboard', (ev) => { this._handleRecvClipboard(ev) })
