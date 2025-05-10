@@ -78,6 +78,7 @@ export class VNCDisplay extends Display {
         this._rfbClient.addEventListener('connect', (ev) => { this._connectedToRFBServer(ev) })
         this._rfbClient.addEventListener('disconnect', (ev) => { this._disconnectedFromRFBServer(ev) })
         this._rfbClient.addEventListener('clipboard', (ev) => { this._handleRecvClipboard(ev) })
+        this._rfbClient.addEventListener('serververification', (ev) => { this._rfbClient.approveServer() })
         this._rfbClient.resizeSession = true
         this._rfbClient.scaleViewport = true
     }
