@@ -78,11 +78,25 @@ export class VNCDisplay extends Display {
         this._rfbClient.addEventListener('connect', (ev) => { this._connectedToRFBServer(ev) })
         this._rfbClient.addEventListener('disconnect', (ev) => { this._disconnectedFromRFBServer(ev) })
         this._rfbClient.addEventListener('clipboard', (ev) => { this._handleRecvClipboard(ev) })
-        this._rfbClient.addEventListener('serververification', (ev) => { console.log('serververification event received', ev); this._rfbClient.approveServer() })
+        this._rfbClient.addEventListener('serververification', (ev) => { this._serverVerify.bind(this) })
         this._rfbClient.addEventListener('securityfailure', (ev) => { console.log(ev) })
         this._rfbClient.addEventListener('credentialsrequired', (ev) => { console.log(ev) })
         this._rfbClient.resizeSession = true
         this._rfbClient.scaleViewport = true
+    }
+
+    async _serverVerify(ev) {
+      console.log('serververification event received', ev)
+      const type = ev.detail.type
+      if (type === 'RSA') {
+        const publickey = ev.detail.publickey
+        let fingerprint = await window.crypto.subtle.digest("SHA-1", publickey)
+        // The same fingerprint format as RealVNC
+        fingerprint = Array.from(new Uint8Array(fingerprint).slice(0, 8)).map(
+            x => x.toString(16).padStart(2, '0')).join('-')
+        console.log('@noVNC FINGERPRINT >> ', fingerprint)
+      }
+      this._rfbClient.approveServer()
     }
 
     async _disconnect() {
@@ -93,7 +107,6 @@ export class VNCDisplay extends Display {
     // with the desktop session.
     _connectedToRFBServer (ev) {
         console.log('Connected to RFB server')
-        this._rfbClient.approveServer()
         const canvas = document.querySelector('canvas')
         canvas.addEventListener('keydown', (e) => {
             if (e.ctrlKey && e.location === 2) { // secondary ctrl locks pointer
