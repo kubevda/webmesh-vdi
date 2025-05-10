@@ -329,7 +329,7 @@ export default class DisplayManager extends Emitter {
                 }
             }
         } else {
-            console.log(`Something went wrong, connection is closed (${event}) - Reconnecting`)
+            console.log(`Something went wrong, connection is closed (${JSON.stringify(event)}) - Reconnecting`)
             this._doStatusWebsocket()
         }
 
